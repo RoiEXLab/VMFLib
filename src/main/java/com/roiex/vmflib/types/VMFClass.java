@@ -1,7 +1,6 @@
 package com.roiex.vmflib.types;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -68,7 +67,10 @@ public class VMFClass {
 
 	public String print() {
 		StringBuilder result = new StringBuilder();
-		result.append(name).append('\n').append('{').append('\n');
+		result.append(name).append('\n').append('{');
+		if (properties.size() > 0 || subclasses.size() > 0) {
+			result.append('\n');
+		}
 		Iterator<Entry<String, String>> iterator = properties.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<String, String> property = iterator.next();
@@ -87,10 +89,5 @@ public class VMFClass {
 		}
 		result.append('}').append('\n');
 		return result.toString();
-	}
-
-	@Override
-	public String toString() {
-		return name + ":{\n" + Arrays.toString(subclasses.toArray()) + "\n}";
 	}
 }

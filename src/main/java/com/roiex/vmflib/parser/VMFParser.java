@@ -1,8 +1,8 @@
 package com.roiex.vmflib.parser;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -19,9 +19,9 @@ public class VMFParser {
 	private Scanner scanner;
 	private Deque<VMFClass> stack = new LinkedList<>();
 
-	public VMFRoot parseFile(File file) throws FileNotFoundException {
+	private VMFRoot parse(Scanner scanner) throws FileNotFoundException {
 		try {
-			scanner = new Scanner(new FileInputStream(file));
+			this.scanner = scanner;
 			VMFRoot root = new VMFRoot();
 			stack.addLast(root);
 			parse();
@@ -30,8 +30,20 @@ public class VMFParser {
 			lineCount = -1;
 			scanner.close();
 			lastStrings.setLength(0);
-			stack.clear();//Shouldn't be needed
+			stack.clear();// Shouldn't be needed
 		}
+	}
+
+	public VMFRoot parse(File file) throws FileNotFoundException {
+		return parse(new Scanner(file));
+	}
+
+	public VMFRoot parse(InputStream stream) throws FileNotFoundException {
+		return parse(new Scanner(stream));
+	}
+
+	public VMFRoot parse(String string) throws FileNotFoundException {
+		return parse(new Scanner(string));
 	}
 
 	private void parse() {
@@ -54,6 +66,9 @@ public class VMFParser {
 				} else if (currentChar == '}') {
 					applyProperties(lastStrings.toString());
 					lastStrings.setLength(0);
+					if (stack.size() <= 1) {
+						throw new IllegalStateException("Unbalanced brackets in File");
+					}
 					stack.removeLast();
 				} else {
 					lastStrings.append(currentChar);

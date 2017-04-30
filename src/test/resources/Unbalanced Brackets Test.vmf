@@ -1,0 +1,94 @@
+versioninfo
+{
+	"prefab" "1"
+	"formatversion" "100"
+	"mapversion" "1"
+	"editorversion" "400"
+	"editorbuild" "6411"
+}
+world}
+{
+	"detailvbsp" "detail.vbsp"
+	"skyname" "sky_day01_01"
+	"maxpropscreenwidth" "-1"
+	"classname" "worldspawn"
+	"detailmaterial" "detail/detailsprites"
+	"mapversion" "1"
+	"id" "6"
+	solid
+	{
+		"id" "7"
+		side
+		{
+			"plane" "(0 40 40) (40 40 40) (40 0 40)"
+			"material" "MINECRAFT_ORIGINAL_NEW/DIRT"
+			"rotation" "0"
+			"uaxis" "[1 0 0 0] 0.3125"
+			"lightmapscale" "16"
+			"id" "7"
+			"vaxis" "[0 -1 0 0] 0.3125"
+			"smoothing_groups" "0"	
+		}
+		side
+		{
+			"plane" "(0 0 0) (40 0 0) (40 40 0)"
+			"material" "MINECRAFT_ORIGINAL_NEW/DIRT"
+			"rotation" "0"
+			"uaxis" "[1 0 0 0] 0.3125"
+			"lightmapscale" "16"
+			"id" "8"
+			"vaxis" "[0 -1 0 0] 0.3125"
+			"smoothing_groups" "0"	
+		}
+		side
+		{
+			"plane" "(0 40 40) (0 0 40) (0 0 0)"
+			"material" "MINECRAFT_ORIGINAL_NEW/DIRT"
+			"rotation" "0"
+			"uaxis" "[0 1 0 0] 0.3125"
+			"lightmapscale" "16"
+			"id" "9"
+			"vaxis" "[0 0 -1 0] 0.3125"
+			"smoothing_groups" "0"	
+		}
+		side
+		{
+			"plane" "(40 40 0) (40 0 0) (40 0 40)"
+			"material" "MINECRAFT_ORIGINAL_NEW/DIRT"
+			"rotation" "0"
+			"uaxis" "[0 1 0 0] 0.3125"
+			"lightmapscale" "16"
+			"id" "10"
+			"vaxis" "[0 0 -1 0] 0.3125"
+			"smoothing_groups" "0"	
+		}
+		side
+		{
+			"plane" "(40 40 40) (0 40 40) (0 40 0)"
+			"material" "MINECRAFT_ORIGINAL_NEW/DIRT"
+			"rotation" "0"
+			"uaxis" "[1 0 0 0] 0.3125"
+			"lightmapscale" "16"
+			"id" "11"
+			"vaxis" "[0 0 -1 0] 0.3125"
+			"smoothing_groups" "0"	
+		}
+		side
+		{
+			"plane" "(40 0 0) (0 0 0) (0 0 40)"
+			"material" "MINECRAFT_ORIGINAL_NEW/DIRT"
+			"rotation" "0"
+			"uaxis" "[1 0 0 0] 0.3125"
+			"lightmapscale" "16"
+			"id" "12"
+			"vaxis" "[0 0 -1 0] 0.3125"
+			"smoothing_groups" "0"	
+		}
+		editor
+		{
+			"visgroupshown" "1"
+			"color" "0 209 150"
+			"visgroupautoshown" "1"	
+		}
+	}
+}
