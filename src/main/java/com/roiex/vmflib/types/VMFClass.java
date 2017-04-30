@@ -24,7 +24,11 @@ public class VMFClass {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		String trimmedName = name.trim();
+		if (trimmedName.matches("[^\\u0000]*[\"\\n\\s{}][^\\u0000]*")) {
+			throw new IllegalArgumentException("Class Name '" + name + "' contains Illegal Characters!");
+		}
+		this.name = trimmedName;
 	}
 
 	public VMFClass getParent() {
@@ -64,13 +68,13 @@ public class VMFClass {
 
 	public String print() {
 		StringBuilder result = new StringBuilder();
-		result.append(name).append(" \n").append('{').append('\n');
+		result.append(name).append('\n').append('{').append('\n');
 		Iterator<Entry<String, String>> iterator = properties.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<String, String> property = iterator.next();
 			result.append('\u0009');
 			result.append("\"" + property.getKey() + "\" \"" + property.getValue() + "\"");
-			if (iterator.hasNext()) {
+			if (iterator.hasNext() || subclasses.size() > 0) {
 				result.append('\n');
 			}
 		}
