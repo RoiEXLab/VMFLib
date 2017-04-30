@@ -25,11 +25,12 @@ public class VMFParser {
 			VMFRoot root = new VMFRoot();
 			stack.addLast(root);
 			parse();
-			return (VMFRoot) stack.getFirst();
+			return (VMFRoot) stack.removeFirst();
 		} finally {
 			lineCount = -1;
 			scanner.close();
 			lastStrings.setLength(0);
+			stack.clear();//Shouldn't be needed
 		}
 	}
 
@@ -90,5 +91,4 @@ public class VMFParser {
 			}
 		}
 	}
-
 }
