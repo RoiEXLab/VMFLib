@@ -10,14 +10,16 @@ import org.junit.jupiter.api.Test;
 public class VMFParserTest {
 
 	@Test
-	public void testReliability() throws FileNotFoundException {
+	public void testParsing() throws FileNotFoundException {
 		VMFParser parser = new VMFParser();
-		String smallTest = parser.parse(this.getClass().getResourceAsStream("/Small Test.vmf")).print();
-		String bigTest = parser.parse(this.getClass().getResourceAsStream("/Large Test.vmf")).print();
+		repeatTests(parser.parse(this.getClass().getResourceAsStream("/Small Test.vmf")).print(), parser);
+		parser.parse(this.getClass().getResourceAsStream("/Large Test.vmf")).print();
 
-		for (int i = 0; i < 10; i++) {
-			smallTest = parser.parse(smallTest).print();
-			bigTest = parser.parse(bigTest).print();
+	}
+
+	private void repeatTests(String file, VMFParser parser) throws FileNotFoundException {
+		for (int i = 0; i < 100; i++) {
+			file = parser.parse(file).print();
 		}
 	}
 
