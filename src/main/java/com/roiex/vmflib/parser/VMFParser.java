@@ -47,7 +47,7 @@ public class VMFParser {
 	}
 
 	private void parse() {
-		while (scanner.hasNextLine()) {
+		whileLoop: while (scanner.hasNextLine()) {
 			String currentLine = scanner.nextLine();
 			lineCount++;
 			for (int linePos = 0; linePos < currentLine.length(); linePos++) {
@@ -70,6 +70,9 @@ public class VMFParser {
 						throw new IllegalStateException("Unbalanced brackets in File");
 					}
 					stack.removeLast();
+				} else if (currentChar == '/' && currentLine.length() > linePos + 1
+						&& currentLine.charAt(linePos + 1) == '/') {
+					continue whileLoop;
 				} else {
 					lastStrings.append(currentChar);
 				}

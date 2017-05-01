@@ -1,11 +1,11 @@
 versioninfo
-{
+{//Some random comment
 	"prefab" "1"
 	"formatversion" "100"
 	"mapversion" "1"
-	"editorversion" "400"
+	"editorversion" "400"//Some other comment ""
 	"editorbuild" "6411"
-}
+}//Some comment with {"test" "ballblb"}
 world
 {
 	"detailvbsp" "detail.vbsp"
