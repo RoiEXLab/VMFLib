@@ -19,7 +19,7 @@ public class VMFParser {
 	private Scanner scanner;
 	private Deque<VMFClass> stack = new LinkedList<>();
 
-	private VMFRoot parse(Scanner scanner) throws FileNotFoundException {
+	private synchronized VMFRoot parse(Scanner scanner) throws FileNotFoundException {
 		try {
 			this.scanner = scanner;
 			VMFRoot root = new VMFRoot();

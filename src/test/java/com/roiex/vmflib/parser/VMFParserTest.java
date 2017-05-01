@@ -35,4 +35,18 @@ public class VMFParserTest {
 		assertTrue(iaexception.getMessage().contains("quotes"));
 	}
 
+	@Test
+	public void testThreadSafety() throws InterruptedException, FileNotFoundException {
+		VMFParser parser = new VMFParser();
+		Thread secondThread = new Thread(() -> {
+			try {
+				parser.parse(this.getClass().getResourceAsStream("/Small Test.vmf"));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		});
+		secondThread.start();
+		parser.parse(this.getClass().getResourceAsStream("/Small Test.vmf"));
+		secondThread.join();
+	}
 }
